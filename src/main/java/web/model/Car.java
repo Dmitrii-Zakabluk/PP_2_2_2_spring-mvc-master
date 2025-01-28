@@ -12,6 +12,7 @@ public class Car {
         this.color = color;
 
     }
+
     public String getBrand() {
         return brand;
     }

@@ -14,11 +14,15 @@ import java.util.List;
 @Controller
 public class CarController {
 
+    private final CarServiceImp carService;
+
     @Autowired
-    private CarServiceImp carService;
+    public CarController(CarServiceImp carService) {
+        this.carService = carService;
+    }
 
     @GetMapping("/cars")
-    public String carIndex(@RequestParam(defaultValue = "5") int count, Model model) {
+    public String printCarList(@RequestParam(defaultValue = "5") int count, Model model) {
         List<Car> carList = carService.getCarList(count);
         model.addAttribute("cars", carList);
         return "carIndex";
